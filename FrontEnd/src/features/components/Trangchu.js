@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Banner from "../container/trangchu/banner/Banner";
-// import Camnangdulich from "../container/trangchu/camnangdulich/Camnangdulich";
+// import TravelGuide from "../container/trangchu/travel-guide/TravelGuide";
 // import CreateTour from "../container/trangchu/createTour/CreateTour";
-import Tourtrongnuoc from "../container/trangchu/tourtrongnuoc/Tourtrongnuoc";
-import Tournuocngoai from "../container/trangchu/tournuocngoai/Tournuocngoai";
-import Tintuc from "../container/trangchu/tintuc/Tintuc";
-import Ykienkhachhang from "../container/trangchu/ykienkhachhang/ykienkhachhang";
-import Dichvu from "../container/trangchu/dichvu/Dichvu";
+import DomesticTour from "../container/trangchu/domestic-tour/DomesticTour";
+import OverseasTour from "../container/trangchu/overseas-tour/OverseasTour";
+import News from "../container/trangchu/news/News";
+import CustomerReviews from "../container/trangchu/customer-reviews/CustomerReviews";
+import Service from "../container/trangchu/service/Service";
 import Footer from "../container/trangchu/footer/Footer";
 export class Trangchu extends Component {
-
   render() {
     return (
       <div>
         <Banner />
-        {/* <Camnangdulich /> */}
+        {/* <TravelGuide /> */}
         {/* <CreateTour /> */}
-        <Tourtrongnuoc />
-        <Tournuocngoai />
-        <Dichvu />
-        <Tintuc />
-        <Ykienkhachhang />
+        <DomesticTour />
+        <OverseasTour />
+        <Service />
+        <News />
+        <CustomerReviews />
         <Footer />
       </div>
     );

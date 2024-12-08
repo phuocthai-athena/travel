@@ -1,9 +1,8 @@
-import "./footer.css";
-
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import "./footer.css";
 function Footer(props) {
   const footers = useSelector((state) => state.lienhes.lienhe.data);
   const socials = useSelector((state) => state.mangxahois.mangxahoi.data);

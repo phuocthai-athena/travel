@@ -1,10 +1,11 @@
-import { Avatar, Rate } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
-import "./ykien.css";
+import { Avatar, Rate } from "antd";
 import Fade from "react-reveal/Fade";
 
-function CustomerReviews(props) {
+import "./ykien.css";
+
+function CustomerReview(props) {
   const comments = useSelector((state) => state.binhluans.binhluan.data);
 
   let commentList = [];
@@ -71,6 +72,6 @@ function CustomerReviews(props) {
   );
 }
 
-CustomerReviews.propTypes = {};
+CustomerReview.propTypes = {};
 
-export default CustomerReviews;
+export default CustomerReview;

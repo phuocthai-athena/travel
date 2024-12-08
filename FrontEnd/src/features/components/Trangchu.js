@@ -6,7 +6,7 @@ import Banner from "../container/trangchu/banner/Banner";
 import DomesticTour from "../container/trangchu/domestic-tour/DomesticTour";
 import OverseasTour from "../container/trangchu/overseas-tour/OverseasTour";
 import News from "../container/trangchu/news/News";
-import CustomerReviews from "../container/trangchu/customer-reviews/CustomerReviews";
+import CustomerReview from "../container/trangchu/customer-reviews/CustomerReview";
 import Service from "../container/trangchu/service/Service";
 import Footer from "../container/trangchu/footer/Footer";
 export class Trangchu extends Component {
@@ -20,7 +20,7 @@ export class Trangchu extends Component {
         <OverseasTour />
         <Service />
         <News />
-        <CustomerReviews />
+        <CustomerReview />
         <Footer />
       </div>
     );

@@ -1,9 +1,8 @@
-import "./dichvu.css";
-
 import React from "react";
 import { useSelector } from "react-redux";
 
 import "../../../../fixed.css";
+import "./dichvu.css";
 
 function Service(props) {
   const services = useSelector((state) => state.dichvus.dichvu.data);

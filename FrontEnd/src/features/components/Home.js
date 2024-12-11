@@ -3,15 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useRouteMatch
+  useRouteMatch,
 } from "react-router-dom";
 
 import Login from "../container/login/Login";
 import Menu from "../container/trangchu/menu/Menu";
 import Menu2 from "../container/trangchu/menu/Menu2";
-import Trangchu from './Trangchu'
-import Admin from './Admin'
-import Dangky from '../container/dangky/Dangky'
+import Trangchu from "./Trangchu";
+import Admin from "./Admin";
+import Register from "../container/register/Register";
 import Tour from "../container/detailtour/tour/Tour";
 import Tintucdetail from "../container/tintuc/tintucdetail/Tintucdetail";
 import Listtour from "../container/Listtour/Listtour";
@@ -38,7 +38,7 @@ import { lienheData } from "../container/admin/Lienhe/lienheSlice";
 import { ngaydiData } from "../container/admin/Ngaydi/ngaydiSlice";
 import { tourData } from "../container/admin/Tour/tourSlice";
 import { camnangdulichData } from "../container/admin/Camnangdulich/camnangdulichSlice";
-import { inforData } from "../container/login/inforSlice";
+import { infoData } from "../container/login/infoSlice";
 import { chiphiData } from "../container/admin/Chiphi/chiphiSlice";
 import CreateTour from "../container/createTour/CreateTour";
 import { thongbaoData } from "../container/admin/Kiemduyet/thongbaoSlice";
@@ -60,26 +60,61 @@ export default function NestingExample() {
   //   }
   //   fetchTintucList();
   // }, []);
-  const actionquocgia = async () => { await dispatch(quocgiaData()) }
-  const actiontintuc = async () => { await dispatch(tintucData()) }
-  const actionloaitour = async () => { await dispatch(loaitourData()) }
-  const actiondiadiem = async () => { await dispatch(diadiemData()) }
-  const actionmangxahoi = async () => { await dispatch(mangxahoiData()) }
-  const actionbinhluan = async () => { await dispatch(binhluanData()) }
-  const actiontag = async () => { await dispatch(tagData()) }
-  const actionanh = async () => { await dispatch(anhData()) }
-  const actiondichvu = async () => { await dispatch(dichvuData()) }
-  const actionhoadon = async () => { await dispatch(hoadonData()) }
-  const actionrole = async () => { await dispatch(roleData()) }
-  const actionlienhe = async () => { await dispatch(lienheData()) }
-  const actionngaydi = async () => { await dispatch(ngaydiData()) }
-  const actiontour = async () => { await dispatch(tourData()) }
-  const actioncamnang = async () => { await dispatch(camnangdulichData()) }
-  const actioninfor = async () => { await dispatch(inforData()) }
-  const actionchiphi = async () => { await dispatch(chiphiData()) }
-  const actionthongbao = async () => { await dispatch(thongbaoData()) }
+  const actionquocgia = async () => {
+    await dispatch(quocgiaData());
+  };
+  const actiontintuc = async () => {
+    await dispatch(tintucData());
+  };
+  const actionloaitour = async () => {
+    await dispatch(loaitourData());
+  };
+  const actiondiadiem = async () => {
+    await dispatch(diadiemData());
+  };
+  const actionmangxahoi = async () => {
+    await dispatch(mangxahoiData());
+  };
+  const actionbinhluan = async () => {
+    await dispatch(binhluanData());
+  };
+  const actiontag = async () => {
+    await dispatch(tagData());
+  };
+  const actionanh = async () => {
+    await dispatch(anhData());
+  };
+  const actiondichvu = async () => {
+    await dispatch(dichvuData());
+  };
+  const actionhoadon = async () => {
+    await dispatch(hoadonData());
+  };
+  const actionrole = async () => {
+    await dispatch(roleData());
+  };
+  const actionlienhe = async () => {
+    await dispatch(lienheData());
+  };
+  const actionngaydi = async () => {
+    await dispatch(ngaydiData());
+  };
+  const actiontour = async () => {
+    await dispatch(tourData());
+  };
+  const actioncamnang = async () => {
+    await dispatch(camnangdulichData());
+  };
+  const actioninfor = async () => {
+    await dispatch(infoData());
+  };
+  const actionchiphi = async () => {
+    await dispatch(chiphiData());
+  };
+  const actionthongbao = async () => {
+    await dispatch(thongbaoData());
+  };
   useEffect(() => {
-
     // const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
     //   if (!user) {
     //     console.log("log out");
@@ -116,8 +151,8 @@ export default function NestingExample() {
     <Router>
       <div>
         <Switch>
-          <Route path="/dangnhap" component="" />
-          <Route path="/dangky" component="" />
+          <Route path="/login" component="" />
+          <Route path="/register" component="" />
           <Route path="/admin" component="" />
           <Route exact path="/">
             <Menu />
@@ -136,11 +171,11 @@ export default function NestingExample() {
           <Route path="/thongtin/:id">
             <Thongtin />
           </Route>
-          <Route path="/dangnhap">
+          <Route path="/login">
             <Ldangnhap />
           </Route>
-          <Route path="/dangky">
-            <Dangky />
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="/listtintuc">
             <Listtintuc />
@@ -157,16 +192,16 @@ export default function NestingExample() {
           <Route path="/list-tour">
             <Listtour />
           </Route>
-          <Route path='/dat-tour'>
+          <Route path="/dat-tour">
             <Dattour />
           </Route>
-          <Route path='/create-tour'>
+          <Route path="/create-tour">
             <CreateTour />
           </Route>
-          <Route path='/stripe'>
+          <Route path="/stripe">
             <Stripe />
           </Route>
-          <Route path='/hotels'>
+          <Route path="/hotels">
             <Hotel />
           </Route>
           <Route path="/detailhotel/:id">
@@ -183,15 +218,13 @@ export default function NestingExample() {
 
 function Ldangnhap() {
   let { url } = useRouteMatch();
-  return (
-    <Login url={url} />
-  );
+  return <Login url={url} />;
 }
 function Ladmin() {
   let { path, url } = useRouteMatch();
   if (localStorage.getItem("token")) {
-    return <Admin path={path} url={url} />
+    return <Admin path={path} url={url} />;
   } else {
-    return <Error />
+    return <Error />;
   }
 }

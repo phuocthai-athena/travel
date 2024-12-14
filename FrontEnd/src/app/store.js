@@ -19,7 +19,7 @@ import khuyenmaiReducer from "../features/container/admin/Khuyenmai/khuyenmaiSli
 import ngaydiReducer from "../features/container/admin/Ngaydi/ngaydiSlice"
 import camnangReducer from "../features/container/admin/Camnangdulich/camnangdulichSlice"
 import userroleReducer from "../features/container/admin/header/userroleSlice"
-import inforReducer from "../features/container/login/inforSlice"
+import infoReducer from "../features/container/login/infoSlice"
 import chitieuReducer from "../features/container/admin/Doanhthu/chitieuSlice"
 import thanhtoanReducer from "../features/container/detailtour/tour/thanhtoanSlice"
 import chiphiReducer from "../features/container/admin/Chiphi/chiphiSlice"
@@ -45,7 +45,7 @@ const rootReducer = {
   ngaydis: ngaydiReducer,
   camnangdulichs: camnangReducer,
   userroles: userroleReducer,
-  infor: inforReducer,
+  infor: infoReducer,
   chitieu: chitieuReducer,
   khuyenmais: khuyenmaiReducer,
   thanhtoans: thanhtoanReducer,

@@ -6,14 +6,15 @@ import HomePage from "../pages/frontend/HomePage";
 import LoginPage from "../pages/frontend/LoginPage";
 import RegisterPage from "../pages/frontend/RegisterPage";
 import TourListPage from "../pages/frontend/TourListPage";
-import TourDetailPage from "../pages/frontend/TourDetailPage";
+import FrontendTourDetailPage from "../pages/frontend/TourDetailPage";
 import ProfilePage from "../pages/frontend/ProfilePage";
+import NotFoundPage from "../pages/common/NotFoundPage";
 
 import DashboardPage from "../pages/admin/DashboardPage";
-import AdminTourListPage from "../pages/admin/AdminTourListPage";
-import AdminAddTourPage from "../pages/admin/AdminAddTourPage";
-import AdminEditTourPage from "../pages/admin/AdminEditTourPage";
-import AdminTourDetailPage from "../pages/admin/AdminTourDetailPage";
+import ToursListPage from "../pages/admin/tours/ToursListPage";
+import TourCreatePage from "../pages/admin/tours/TourCreatePage";
+import TourEditPage from "../pages/admin/tours/TourEditPage";
+import AdminTourDetailPage from "../pages/admin/tours/TourDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/tour/:id",
-    element: <TourDetailPage />,
+    element: <FrontendTourDetailPage />,
   },
   {
     path: "/profile",
@@ -58,21 +59,25 @@ const router = createBrowserRouter([
       },
       {
         path: "tours",
-        element: <AdminTourListPage />,
+        element: <ToursListPage />,
       },
       {
-        path: "tours/add",
-        element: <AdminAddTourPage />,
+        path: "tours/create",
+        element: <TourCreatePage />,
       },
       {
         path: "tours/edit/:id",
-        element: <AdminEditTourPage />,
+        element: <TourEditPage />,
       },
       {
         path: "tours/:id",
         element: <AdminTourDetailPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 

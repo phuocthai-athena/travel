@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { useRegister } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -17,13 +18,15 @@ import {
 
 const registerSchema = z
   .object({
-    name: z.string().min(2, "Tên phải có ít nhất 2 ký tự"),
-    email: z.string().email("Email không hợp lệ"),
-    password: z.string().min(6, "Mật khẩu tối thiểu 6 ký tự"),
-    confirmPassword: z.string().min(6, "Mật khẩu tối thiểu 6 ký tự"),
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z
+      .string()
+      .min(6, "Password must be at least 6 characters"),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Mật khẩu không khớp",
+    message: "Passwords do not match",
     path: ["confirmPassword"],
   });
 
@@ -51,17 +54,17 @@ export default function RegisterPage() {
       {
         onSuccess: () => {
           toast({
-            title: "Đăng ký thành công",
-            description: "Chào mừng bạn đến với hệ thống!",
+            title: "Registration successful",
+            description: "Welcome to the platform!",
           });
         },
         onError: (error) => {
           toast({
             variant: "destructive",
-            title: "Đăng ký thất bại",
+            title: "Registration failed",
             description:
               error.response?.data?.message ||
-              "Có lỗi xảy ra. Vui lòng thử lại.",
+              "An error occurred. Please try again.",
           });
         },
       }
@@ -73,20 +76,20 @@ export default function RegisterPage() {
       <Card className="w-full max-w-md bg-white/95 shadow-2xl backdrop-blur">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-3xl font-bold text-gray-800">
-            Đăng ký
+            Sign Up
           </CardTitle>
           <p className="text-sm text-muted-foreground">
-            Tạo tài khoản mới để bắt đầu
+            Create a new account to get started
           </p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Họ và tên</Label>
+              <Label htmlFor="name">Full Name</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Nguyễn Văn A"
+                placeholder="John Doe"
                 {...formRegister("name")}
               />
               {errors.name && (
@@ -108,7 +111,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Mật khẩu</Label>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -123,7 +126,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Xác nhận mật khẩu</Label>
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -145,32 +148,34 @@ export default function RegisterPage() {
                 required
               />
               <label htmlFor="terms" className="text-sm text-gray-600">
-                Tôi đồng ý với{" "}
+                I agree to the{" "}
                 <a href="#" className="text-blue-600 hover:underline">
-                  điều khoản sử dụng
+                  Terms of Service
                 </a>
               </label>
             </div>
 
             <Button type="submit" disabled={isPending} className="w-full">
-              {isPending ? "Đang đăng ký..." : "Đăng ký"}
+              {isPending ? "Signing up..." : "Sign Up"}
             </Button>
           </form>
         </CardContent>
 
         <CardFooter className="flex flex-col space-y-4">
           <div className="text-center text-sm text-muted-foreground">
-            Đã có tài khoản?{" "}
+            Already have an account?{" "}
             <Link to="/login" className="text-blue-600 hover:underline">
-              Đăng nhập ngay
+              Sign in
             </Link>
           </div>
 
-          <div className="text-center text-sm text-muted-foreground">
-            <Link to="/" className="hover:underline">
-              ← Quay lại trang chủ
-            </Link>
-          </div>
+          <Link
+            to="/"
+            className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to home
+          </Link>
         </CardFooter>
       </Card>
     </div>

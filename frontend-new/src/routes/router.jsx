@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import AdminLayout from "@/layouts/AdminLayout";
 
 import HomePage from "../pages/frontend/HomePage";
 import LoginPage from "../pages/frontend/LoginPage";
@@ -47,41 +48,31 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <ProtectedRoute roles={["admin"]}>
-        <DashboardPage />
+        <AdminLayout />
       </ProtectedRoute>
     ),
-  },
-  {
-    path: "/admin/tours",
-    element: (
-      <ProtectedRoute roles={["admin"]}>
-        <AdminTourListPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/admin/tours/add",
-    element: (
-      <ProtectedRoute roles={["admin"]}>
-        <AdminAddTourPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/admin/tours/edit/:id",
-    element: (
-      <ProtectedRoute roles={["admin"]}>
-        <AdminEditTourPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/admin/tours/:id",
-    element: (
-      <ProtectedRoute roles={["admin"]}>
-        <AdminTourDetailPage />
-      </ProtectedRoute>
-    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      },
+      {
+        path: "tours",
+        element: <AdminTourListPage />,
+      },
+      {
+        path: "tours/add",
+        element: <AdminAddTourPage />,
+      },
+      {
+        path: "tours/edit/:id",
+        element: <AdminEditTourPage />,
+      },
+      {
+        path: "tours/:id",
+        element: <AdminTourDetailPage />,
+      },
+    ],
   },
 ]);
 

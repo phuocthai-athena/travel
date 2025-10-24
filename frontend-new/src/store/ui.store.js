@@ -1,15 +1,29 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export const useUIStore = create((set) => ({
-  sidebarOpen: true,
-  loading: false,
-  notification: null,
+export const useUIStore = create(
+  persist(
+    (set) => ({
+      sidebarCollapsed: false,
+      loading: false,
+      notification: null,
 
-  toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+      toggleSidebar: () =>
+        set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
 
-  setLoading: (loading) => set({ loading }),
+      setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
 
-  showNotification: (notification) => set({ notification }),
+      setLoading: (loading) => set({ loading }),
 
-  clearNotification: () => set({ notification: null }),
-}));
+      showNotification: (notification) => set({ notification }),
+
+      clearNotification: () => set({ notification: null }),
+    }),
+    {
+      name: "ui-storage",
+      partialize: (state) => ({
+        sidebarCollapsed: state.sidebarCollapsed,
+      }),
+    }
+  )
+);

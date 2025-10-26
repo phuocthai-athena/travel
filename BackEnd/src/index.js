@@ -13,6 +13,7 @@ import { APP_ORIGIN, NODE_ENV, PORT } from "./constants/env.js";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import sessionsRoutes from "./routes/session.route.js";
+import tourRoutes from "./routes/tour.route.js";
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoutes);
 // protected routes
 app.use("/api/user", authenticate, userRoutes);
 app.use("/api/sessions", authenticate, sessionsRoutes);
+app.use("/api/tour", tourRoutes);
 
 app.use(errorHandler);
 

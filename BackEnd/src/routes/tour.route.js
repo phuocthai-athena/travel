@@ -1,18 +1,18 @@
 import { Router } from "express";
 import {
-  createTourHandler,
-  deleteTourHandle,
-  getAllToursHandle,
-  getTourHandle,
-  updateTourHandle,
+  createTour,
+  deleteTour,
+  getTours,
+  getTour,
+  updateTour,
 } from "../controllers/tour.controller.js";
 
 const tourRoutes = Router();
 
-tourRoutes.post("/", createTourHandler);
-tourRoutes.patch("/:id", updateTourHandle);
-tourRoutes.delete("/:id", deleteTourHandle);
-tourRoutes.get("/", getAllToursHandle);
-tourRoutes.get("/:id", getTourHandle);
+tourRoutes.post("/", createTour);
+tourRoutes.patch("/:id", updateTour);
+tourRoutes.delete("/:id", deleteTour);
+tourRoutes.get("/", getTours);
+tourRoutes.get("/:id", getTour);
 
 export default tourRoutes;

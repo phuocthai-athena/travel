@@ -1,4 +1,10 @@
 import SectionTitle from "@/components/common/SectionTitle";
+import hoiAnImg from "@/assets/images/fv-hoi-an.png";
+import phuQuocImg from "@/assets/images/fv-phu-quoc.png";
+import haGiangImg from "@/assets/images/fv-ha-giang.png";
+import sapaImg from "@/assets/images/fv-sapa.png";
+import daNangImg from "@/assets/images/fv-da-nang.png";
+import haLongImg from "@/assets/images/fv-ha-long.png";
 
 export default function PopularDestinations() {
   const destinations = {
@@ -6,19 +12,19 @@ export default function PopularDestinations() {
       {
         name: "Hội An",
         travelers: "+1800 lượt khách",
-        image: "/dest-hoian.jpg",
+        image: hoiAnImg,
         size: "small",
       },
       {
         name: "Phú Quốc",
         travelers: "+1800 lượt khách",
-        image: "/dest-phuquoc.jpg",
+        image: phuQuocImg,
         size: "large",
       },
       {
         name: "Hà Giang",
         travelers: "+1800 lượt khách",
-        image: "/dest-hagiang.jpg",
+        image: haGiangImg,
         size: "small",
       },
     ],
@@ -26,19 +32,19 @@ export default function PopularDestinations() {
       {
         name: "SaPa",
         travelers: "+1800 lượt khách",
-        image: "/dest-sapa.jpg",
+        image: sapaImg,
         size: "large",
       },
       {
         name: "Đà Nẵng",
         travelers: "+1800 lượt khách",
-        image: "/dest-danang.jpg",
+        image: daNangImg,
         size: "small",
       },
       {
         name: "Hạ Long",
         travelers: "+1800 lượt khách",
-        image: "/dest-halong.jpg",
+        image: haLongImg,
         size: "small",
       },
     ],
@@ -46,40 +52,46 @@ export default function PopularDestinations() {
 
   return (
     <section className="container mx-auto px-[120px] pb-[100px]">
-      <div className="flex flex-col items-center gap-[60px]">
+      <div className="flex flex-col items-center" style={{ gap: "60px" }}>
         <SectionTitle title="Điểm đến yêu thích" align="center" />
 
         {/* Destinations Grid */}
-        <div className="space-y-6 w-full">
+        <div className="flex flex-col w-full" style={{ gap: "24px" }}>
           {/* Row 1 */}
-          <div className="grid grid-cols-12 gap-6">
+          <div className="flex w-full" style={{ gap: "24px" }}>
             <DestinationCard
               destination={destinations.row1[0]}
-              className="col-span-3"
+              className="flex-1"
+              style={{ width: "282px" }}
             />
             <DestinationCard
               destination={destinations.row1[1]}
-              className="col-span-6"
+              className="flex-none"
+              style={{ width: "588px" }}
             />
             <DestinationCard
               destination={destinations.row1[2]}
-              className="col-span-3"
+              className="flex-1"
+              style={{ width: "282px" }}
             />
           </div>
 
           {/* Row 2 */}
-          <div className="grid grid-cols-12 gap-6">
+          <div className="flex w-full" style={{ gap: "24px" }}>
             <DestinationCard
               destination={destinations.row2[0]}
-              className="col-span-6"
+              className="flex-none"
+              style={{ width: "588px" }}
             />
             <DestinationCard
               destination={destinations.row2[1]}
-              className="col-span-3"
+              className="flex-1"
+              style={{ width: "282px" }}
             />
             <DestinationCard
               destination={destinations.row2[2]}
-              className="col-span-3"
+              className="flex-1"
+              style={{ width: "282px" }}
             />
           </div>
         </div>
@@ -88,10 +100,11 @@ export default function PopularDestinations() {
   );
 }
 
-function DestinationCard({ destination, className }) {
+function DestinationCard({ destination, className, style }) {
   return (
     <div
-      className={`relative h-[380px] rounded-lg overflow-hidden group cursor-pointer ${className}`}
+      className={`relative overflow-hidden group cursor-pointer ${className}`}
+      style={{ ...style, height: "380px", borderRadius: "8px" }}
     >
       {/* Image with Gradient Overlay */}
       <div
@@ -102,9 +115,33 @@ function DestinationCard({ destination, className }) {
       />
 
       {/* Info */}
-      <div className="absolute bottom-6 left-6 space-y-1">
-        <h3 className="text-lg font-bold text-white">{destination.name}</h3>
-        <p className="text-base text-yellow-400">{destination.travelers}</p>
+      <div
+        className="absolute flex flex-col"
+        style={{ left: "24px", bottom: "24px", gap: "4px" }}
+      >
+        <h3
+          className="text-white flex items-center"
+          style={{
+            fontFamily: "Shopee Display",
+            fontWeight: 700,
+            fontSize: "18px",
+            lineHeight: "140%",
+          }}
+        >
+          {destination.name}
+        </h3>
+        <p
+          className="flex items-center"
+          style={{
+            fontFamily: "Shopee Display",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "140%",
+            color: "#FFC515",
+          }}
+        >
+          {destination.travelers}
+        </p>
       </div>
     </div>
   );

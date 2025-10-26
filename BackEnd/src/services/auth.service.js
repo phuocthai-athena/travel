@@ -207,7 +207,7 @@ export const sendForgotPasswordEmail = async (email) => {
     ...getPasswordResetTemplate(url),
   });
   appAssert(
-    data?.id,
+    data?._id,
     INTERNAL_SERVER_ERROR,
     `${error?.name} - ${error?.message}`
   );

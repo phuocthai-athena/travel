@@ -6,7 +6,6 @@ import HotelPromotions from "./components/HotelPromotions";
 import PopularDestinations from "./components/PopularDestinations";
 import CustomerReviews from "./components/CustomerReviews";
 import FeaturedBlogs from "./components/FeaturedBlogs";
-import Footer from "./components/Footer";
 
 export default function HomePage() {
   return (
@@ -19,7 +18,6 @@ export default function HomePage() {
       <PopularDestinations />
       <CustomerReviews />
       <FeaturedBlogs />
-      <Footer />
     </>
   );
 }

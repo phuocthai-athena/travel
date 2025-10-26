@@ -1,83 +1,68 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Button } from "@material-ui/core";
-import firebase from "firebase";
-import { message } from "antd";
-
+import "./login.css";
 import tk from "./../../images/tk.png";
 import mk from "./../../images/mk.png";
-import { infoData } from "./infoSlice";
+import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { message } from "antd";
+import { inforData } from "./inforSlice";
+import { useDispatch } from "react-redux";
 import loginApi from "../../../api/loginApi";
-import { userData } from "../admin/taikhoan/taikhoanSlice";
-import { validateEmail } from "../../../utils/helpers";
 
-import "./login.css";
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "redirect",
-  signInSuccessUrl: "/",
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-};
 function Login(props) {
   const [state, setState] = useState({ email: "", password: "" });
   const { email, password } = state;
 
-  const history = useHistory();
   const dispatch = useDispatch();
-
-  const actionuser = async () => {
-    await dispatch(userData());
+  const actioninfor = async () => {
+    await dispatch(inforData());
   };
-
-  const actionInfo = async () => {
-    await dispatch(infoData());
-  };
-
   const onsubmit = async (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
-      message.warning("Email is not in correct format!");
+      message.warning("Email không đúng định dạng!");
     } else {
       if (email.trim() === "" || password.trim() === "") {
-        message.warning("You have not entered complete information!");
+        message.warning("Bạn chưa nhập đầy đủ thông tin!");
       } else {
-        const token = await loginApi
+        var token = await loginApi
           .login({ email: email, password: password })
           .then((data) => {
             return data;
           });
         if (token !== "err") {
           localStorage.setItem("token", token);
-          actionInfo();
-          message.success("Login successful!");
+          actioninfor();
+          message.success("Đăng nhập thành công!");
           history.push("/");
         } else {
-          message.warning("Wrong username or password!");
+          message.warning("Sai tên đăng nhập hoặc mật khẩu!");
         }
       }
     }
   };
-
-  const onChange = (e) => {
+  const onchange = (e) => {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleRegister = () => {
-    history.push("/register");
+  const history = useHistory();
+  const hangdleDK = () => {
+    history.push("/dangky");
   };
-
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
   return (
     <Router>
       <div id="login">
         <div className="box-login">
           <form className="form" onSubmit={onsubmit}>
             <h3 className="text-uppercase text-white text-center pb-3">
-              Login
+              Đăng nhập
             </h3>
             <div className="input-group flex-nowrap">
               <div className="input-group-prepend">
@@ -88,10 +73,10 @@ function Login(props) {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Email"
+                placeholder="Tài khoản"
                 value={email}
                 name="email"
-                onChange={onChange}
+                onChange={onchange}
                 aria-label="email"
                 aria-describedby="addon-wrapping"
               />
@@ -106,10 +91,10 @@ function Login(props) {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="Mật khẩu"
                 value={password}
                 name="password"
-                onChange={onChange}
+                onChange={onchange}
                 aria-label="email"
                 aria-describedby="addon-wrapping"
               />
@@ -121,15 +106,15 @@ function Login(props) {
                   className="form-check-input"
                   type="checkbox"
                   onChange="onclick"
-                />
-                <span className="text-light">Remember password</span>
+                />{" "}
+                <span className="text-light">Nhớ mật khẩu</span>
               </label>
               <Link
                 to="#"
-                onClick={handleRegister}
+                onClick={hangdleDK}
                 className="float-right text-light"
               >
-                Don't have an account?
+                Chưa có tài khoản?
               </Link>
             </div>
             <Button
@@ -138,7 +123,7 @@ function Login(props) {
               color="primary"
               className="w-100 mb-4"
             >
-              Login
+              Đăng nhập
             </Button>
           </form>
           <p className="or">OR</p>

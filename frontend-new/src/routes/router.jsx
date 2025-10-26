@@ -1,25 +1,48 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminLayout from "@/layouts/AdminLayout";
+import ClientLayout from "@/layouts/ClientLayout";
 
-import HomePage from "../pages/frontend/HomePage";
-import LoginPage from "../pages/frontend/LoginPage";
-import RegisterPage from "../pages/frontend/RegisterPage";
-import TourListPage from "../pages/frontend/TourListPage";
-import FrontendTourDetailPage from "../pages/frontend/TourDetailPage";
-import ProfilePage from "../pages/frontend/ProfilePage";
-import NotFoundPage from "../pages/common/NotFoundPage";
+import HomePage from "@/pages/client/home/HomePage";
+import LoginPage from "@/pages/client/LoginPage";
+import RegisterPage from "@/pages/client/RegisterPage";
+import TourListPage from "@/pages/client/TourListPage";
+import FrontendTourDetailPage from "@/pages/client/TourDetailPage";
+import ProfilePage from "@/pages/client/ProfilePage";
+import NotFoundPage from "@/pages/common/NotFoundPage";
 
-import DashboardPage from "../pages/admin/DashboardPage";
-import ToursListPage from "../pages/admin/tours/ToursListPage";
-import TourCreatePage from "../pages/admin/tours/TourCreatePage";
-import TourEditPage from "../pages/admin/tours/TourEditPage";
-import AdminTourDetailPage from "../pages/admin/tours/TourDetailPage";
+import DashboardPage from "@/pages/admin/DashboardPage";
+import ToursListPage from "@/pages/admin/tours/ToursListPage";
+import TourCreatePage from "@/pages/admin/tours/TourCreatePage";
+import TourEditPage from "@/pages/admin/tours/TourEditPage";
+import AdminTourDetailPage from "@/pages/admin/tours/TourDetailPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <ClientLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "tours",
+        element: <TourListPage />,
+      },
+      {
+        path: "tour/:id",
+        element: <FrontendTourDetailPage />,
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+    ],
   },
   {
     path: "/login",
@@ -28,22 +51,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
-  },
-  {
-    path: "/tours",
-    element: <TourListPage />,
-  },
-  {
-    path: "/tour/:id",
-    element: <FrontendTourDetailPage />,
-  },
-  {
-    path: "/profile",
-    element: (
-      <ProtectedRoute>
-        <ProfilePage />
-      </ProtectedRoute>
-    ),
   },
   {
     path: "/admin",

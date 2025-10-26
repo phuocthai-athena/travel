@@ -83,11 +83,11 @@ export default function TourDetailPage() {
       </div>
 
       {/* Main Image */}
-      {tour.avatar && (
+      {tour.imageUrl && (
         <Card>
           <CardContent className="p-0">
             <img
-              src={tour.avatar}
+              src={tour.imageUrl}
               alt={tour.name}
               className="w-full h-96 object-cover rounded-lg"
             />
@@ -106,7 +106,7 @@ export default function TourDetailPage() {
               <div>
                 <p className="text-sm text-gray-600">Adult Price</p>
                 <p className="text-xl font-bold text-gray-900">
-                  ${tour.gianguoilon || "N/A"}
+                  ${tour.adultPrice || "N/A"}
                 </p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function TourDetailPage() {
               <div>
                 <p className="text-sm text-gray-600">Duration</p>
                 <p className="text-xl font-bold text-gray-900">
-                  {tour.thoigian ? `${tour.thoigian} days` : "N/A"}
+                  {tour.duration ? `${tour.duration} days` : "N/A"}
                 </p>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function TourDetailPage() {
               <div>
                 <p className="text-sm text-gray-600">Max People</p>
                 <p className="text-xl font-bold text-gray-900">
-                  {tour.songuoi || "N/A"}
+                  {tour.numberOfPeople || "N/A"}
                 </p>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function TourDetailPage() {
               <div>
                 <p className="text-sm text-gray-600">Location</p>
                 <p className="text-xl font-bold text-gray-900">
-                  {tour.vitri === 1 ? "Domestic" : "International"}
+                  {tour.position === 1 ? "Domestic" : "International"}
                 </p>
               </div>
             </div>
@@ -172,19 +172,19 @@ export default function TourDetailPage() {
             <div className="flex justify-between border-b pb-2">
               <span className="text-gray-600">Adult Price:</span>
               <span className="font-semibold text-gray-900">
-                ${tour.gianguoilon || "N/A"}
+                ${tour.adultPrice || "N/A"}
               </span>
             </div>
             <div className="flex justify-between border-b pb-2">
               <span className="text-gray-600">Child Price:</span>
               <span className="font-semibold text-gray-900">
-                ${tour.giatreem || "N/A"}
+                ${tour.childPrice || "N/A"}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Baby Price:</span>
               <span className="font-semibold text-gray-900">
-                ${tour.giaembe || "N/A"}
+                ${tour.babyPrice || "N/A"}
               </span>
             </div>
           </CardContent>
@@ -212,13 +212,13 @@ export default function TourDetailPage() {
             <div className="flex justify-between border-b pb-2">
               <span className="text-gray-600">Duration:</span>
               <span className="font-semibold text-gray-900">
-                {tour.thoigian ? `${tour.thoigian} days` : "N/A"}
+                {tour.duration ? `${tour.duration} days` : "N/A"}
               </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Max Capacity:</span>
               <span className="font-semibold text-gray-900">
-                {tour.songuoi || "N/A"} people
+                {tour.numberOfPeople || "N/A"} people
               </span>
             </div>
           </CardContent>
@@ -226,7 +226,7 @@ export default function TourDetailPage() {
       </div>
 
       {/* Tour Description */}
-      {tour.chitiettour && (
+      {tour.tourDetails && (
         <Card>
           <CardHeader>
             <CardTitle>Tour Description</CardTitle>
@@ -234,14 +234,14 @@ export default function TourDetailPage() {
           <CardContent>
             <div
               className="prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: tour.chitiettour }}
+              dangerouslySetInnerHTML={{ __html: tour.tourDetails }}
             />
           </CardContent>
         </Card>
       )}
 
       {/* Notes */}
-      {tour.luuy && (
+      {tour.note && (
         <Card>
           <CardHeader>
             <CardTitle>Important Notes</CardTitle>
@@ -249,7 +249,7 @@ export default function TourDetailPage() {
           <CardContent>
             <div
               className="prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: tour.luuy }}
+              dangerouslySetInnerHTML={{ __html: tour.note }}
             />
           </CardContent>
         </Card>
@@ -271,7 +271,7 @@ export default function TourDetailPage() {
       )}
 
       {/* Map */}
-      {tour.bando && (
+      {tour.map && (
         <Card>
           <CardHeader>
             <CardTitle>Location Map</CardTitle>
@@ -279,24 +279,24 @@ export default function TourDetailPage() {
           <CardContent>
             <div
               className="aspect-video"
-              dangerouslySetInnerHTML={{ __html: tour.bando }}
+              dangerouslySetInnerHTML={{ __html: tour.map }}
             />
           </CardContent>
         </Card>
       )}
 
       {/* Gallery */}
-      {tour.Anhs && tour.Anhs.length > 0 && (
+      {tour.images && tour.images.length > 0 && (
         <Card>
           <CardHeader>
             <CardTitle>Photo Gallery</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-3">
-              {tour.Anhs.map((image, index) => (
+              {tour.images.map((image, index) => (
                 <img
                   key={index}
-                  src={image.link}
+                  src={image.url}
                   alt={`${tour.name} - ${index + 1}`}
                   className="h-48 w-full rounded-lg object-cover"
                 />

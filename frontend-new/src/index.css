@@ -3,6 +3,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom Fonts from /public/fonts */
+@font-face {
+  font-family: "Shopee Display";
+  src: url("/fonts/shopee/ShopeeDisplay-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shopee Display";
+  src: url("/fonts/shopee/ShopeeDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shopee Display";
+  src: url("/fonts/shopee/ShopeeDisplay-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shopee Display";
+  src: url("/fonts/shopee/ShopeeDisplay-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Shopee Display";
+  src: url("/fonts/shopee/ShopeeDisplay-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NVN Motherland Signature";
+  src: url("/fonts/nvn-motherland-signature/NVN-Motherland-Signature.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -39,6 +89,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom Font Families */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-shopee-display: "Shopee Display", var(--font-sans);
+  --font-motherland-signature: "NVN Motherland Signature", cursive;
+  --font-script: "Great Vibes", cursive;
+  --font-heading: "Big Shoulders Display", var(--font-sans);
 }
 
 :root {
@@ -116,5 +174,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Shopee Display", ui-sans-serif, system-ui, sans-serif;
   }
 }

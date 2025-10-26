@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 /**
  * @typedef {Object} ITour
  * @property {string} name
- * @property {string} [avatar]
+ * @property {string} [imageUrl]
  * @property {string} [imageName]
  * @property {number} [adultPrice]
  * @property {number} [childPrice]
@@ -37,7 +37,7 @@ import mongoose from "mongoose";
 const tourSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, maxLength: 128 },
-    avatar: { type: String, maxLength: 5000 },
+    imageUrl: { type: String, maxLength: 5000 },
     imageName: { type: String, maxLength: 1000 },
     adultPrice: { type: Number },
     childPrice: { type: Number },

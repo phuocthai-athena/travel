@@ -17,17 +17,19 @@ export default function TourEditPage() {
 
   const [formData, setFormData] = useState({
     name: "",
-    vitri: "1",
-    thoigian: "",
-    songuoi: "",
-    gianguoilon: "",
-    giatreem: "",
-    giaembe: "",
+    imageUrl: "",
+    imageName: "",
+    adultPrice: "",
+    childPrice: "",
+    babyPrice: "",
     trailer: "",
-    bando: "",
-    chitiettour: "",
-    luuy: "",
+    tourDetails: "",
+    note: "",
+    position: 1,
+    map: "",
     status: 1,
+    numberOfPeople: "",
+    duration: "",
   });
 
   const [imagePreview, setImagePreview] = useState(null);
@@ -36,20 +38,22 @@ export default function TourEditPage() {
     if (tour) {
       setFormData({
         name: tour.name || "",
-        vitri: String(tour.vitri || "1"),
-        thoigian: tour.thoigian || "",
-        songuoi: tour.songuoi || "",
-        gianguoilon: tour.gianguoilon || "",
-        giatreem: tour.giatreem || "",
-        giaembe: tour.giaembe || "",
+        imageUrl: tour.imageUrl || "",
+        imageName: tour.imageName || "",
+        adultPrice: tour.adultPrice || "",
+        childPrice: tour.childPrice || "",
+        babyPrice: tour.babyPrice || "",
         trailer: tour.trailer || "",
-        bando: tour.bando || "",
-        chitiettour: tour.chitiettour || "",
-        luuy: tour.luuy || "",
+        tourDetails: tour.tourDetails || "",
+        note: tour.note || "",
+        position: tour.position || 1,
+        map: tour.map || "",
         status: tour.status || 1,
+        numberOfPeople: tour.numberOfPeople || "",
+        duration: tour.duration || "",
       });
-      if (tour.avatar) {
-        setImagePreview(tour.avatar);
+      if (tour.imageUrl) {
+        setImagePreview(tour.imageUrl);
       }
     }
   }, [tour]);
@@ -158,13 +162,13 @@ export default function TourEditPage() {
                 />
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-3">
                 <div className="space-y-2">
-                  <Label htmlFor="vitri">Location Type</Label>
+                  <Label htmlFor="position">Position Type</Label>
                   <select
-                    id="vitri"
-                    name="vitri"
-                    value={formData.vitri}
+                    id="position"
+                    name="position"
+                    value={formData.position}
                     onChange={handleChange}
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                   >
@@ -174,46 +178,44 @@ export default function TourEditPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="status">Status</Label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={formData.status}
-                    onChange={handleChange}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  >
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="thoigian">Duration (days)</Label>
+                  <Label htmlFor="duration">Duration (days)</Label>
                   <Input
-                    id="thoigian"
-                    name="thoigian"
+                    id="duration"
+                    name="duration"
                     type="number"
                     min="1"
-                    value={formData.thoigian}
+                    value={formData.duration}
                     onChange={handleChange}
                     placeholder="e.g., 5"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="songuoi">Max Capacity (people)</Label>
+                  <Label htmlFor="numberOfPeople">Max Capacity</Label>
                   <Input
-                    id="songuoi"
-                    name="songuoi"
+                    id="numberOfPeople"
+                    name="numberOfPeople"
                     type="number"
                     min="1"
-                    value={formData.songuoi}
+                    value={formData.numberOfPeople}
                     onChange={handleChange}
                     placeholder="e.g., 20"
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="status">Status</Label>
+                <select
+                  id="status"
+                  name="status"
+                  value={formData.status}
+                  onChange={handleChange}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                >
+                  <option value="1">Active</option>
+                  <option value="0">Inactive</option>
+                </select>
               </div>
             </CardContent>
           </Card>
@@ -226,42 +228,42 @@ export default function TourEditPage() {
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-3">
                 <div className="space-y-2">
-                  <Label htmlFor="gianguoilon">Adult Price ($)</Label>
+                  <Label htmlFor="adultPrice">Adult Price ($)</Label>
                   <Input
-                    id="gianguoilon"
-                    name="gianguoilon"
+                    id="adultPrice"
+                    name="adultPrice"
                     type="number"
                     min="0"
                     step="0.01"
-                    value={formData.gianguoilon}
+                    value={formData.adultPrice}
                     onChange={handleChange}
                     placeholder="0.00"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="giatreem">Child Price ($)</Label>
+                  <Label htmlFor="childPrice">Child Price ($)</Label>
                   <Input
-                    id="giatreem"
-                    name="giatreem"
+                    id="childPrice"
+                    name="childPrice"
                     type="number"
                     min="0"
                     step="0.01"
-                    value={formData.giatreem}
+                    value={formData.childPrice}
                     onChange={handleChange}
                     placeholder="0.00"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="giaembe">Baby Price ($)</Label>
+                  <Label htmlFor="babyPrice">Baby Price ($)</Label>
                   <Input
-                    id="giaembe"
-                    name="giaembe"
+                    id="babyPrice"
+                    name="babyPrice"
                     type="number"
                     min="0"
                     step="0.01"
-                    value={formData.giaembe}
+                    value={formData.babyPrice}
                     onChange={handleChange}
                     placeholder="0.00"
                   />
@@ -270,115 +272,118 @@ export default function TourEditPage() {
             </CardContent>
           </Card>
 
-          {/* Media */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Media</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="image">Tour Image</Label>
-                <div className="flex items-center gap-4">
-                  <label
-                    htmlFor="image"
-                    className="flex h-32 w-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400"
-                  >
-                    {imagePreview ? (
-                      <img
-                        src={imagePreview}
-                        alt="Preview"
-                        className="h-full w-full rounded-lg object-cover"
-                      />
-                    ) : (
-                      <>
-                        <Upload className="h-8 w-8 text-gray-400" />
-                        <span className="mt-2 text-sm text-gray-500">
-                          Upload
-                        </span>
-                      </>
-                    )}
-                  </label>
-                  <input
-                    id="image"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="hidden"
-                  />
-                  {imagePreview && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setImagePreview(null)}
+          {/* Media & Description */}
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Media */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Media</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="image">Tour Image</Label>
+                  <div className="flex items-center gap-4">
+                    <label
+                      htmlFor="image"
+                      className="flex h-32 w-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400"
                     >
-                      Remove
-                    </Button>
-                  )}
+                      {imagePreview ? (
+                        <img
+                          src={imagePreview}
+                          alt="Preview"
+                          className="h-full w-full rounded-lg object-cover"
+                        />
+                      ) : (
+                        <>
+                          <Upload className="h-8 w-8 text-gray-400" />
+                          <span className="mt-2 text-sm text-gray-500">
+                            Upload
+                          </span>
+                        </>
+                      )}
+                    </label>
+                    <input
+                      id="image"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="hidden"
+                    />
+                    {imagePreview && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setImagePreview(null)}
+                      >
+                        Remove
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="trailer">Trailer Embed Code</Label>
-                <textarea
-                  id="trailer"
-                  name="trailer"
-                  value={formData.trailer}
-                  onChange={handleChange}
-                  rows={3}
-                  placeholder="Paste YouTube embed code here"
-                  className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                />
-              </div>
+                <div className="space-y-2">
+                  <Label htmlFor="trailer">Trailer Embed Code</Label>
+                  <textarea
+                    id="trailer"
+                    name="trailer"
+                    value={formData.trailer}
+                    onChange={handleChange}
+                    rows={3}
+                    placeholder="Paste YouTube embed code here"
+                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="bando">Map Embed Code</Label>
-                <textarea
-                  id="bando"
-                  name="bando"
-                  value={formData.bando}
-                  onChange={handleChange}
-                  rows={3}
-                  placeholder="Paste Google Maps embed code here"
-                  className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                />
-              </div>
-            </CardContent>
-          </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="map">Map Embed Code</Label>
+                  <textarea
+                    id="map"
+                    name="map"
+                    value={formData.map}
+                    onChange={handleChange}
+                    rows={3}
+                    placeholder="Paste Google Maps embed code here"
+                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
+                </div>
+              </CardContent>
+            </Card>
 
-          {/* Description */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Description</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="chitiettour">Tour Details</Label>
-                <textarea
-                  id="chitiettour"
-                  name="chitiettour"
-                  value={formData.chitiettour}
-                  onChange={handleChange}
-                  rows={6}
-                  placeholder="Enter tour details and itinerary"
-                  className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                />
-              </div>
+            {/* Description */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Description</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="tourDetails">Tour Details</Label>
+                  <textarea
+                    id="tourDetails"
+                    name="tourDetails"
+                    value={formData.tourDetails}
+                    onChange={handleChange}
+                    rows={6}
+                    placeholder="Enter tour details and itinerary"
+                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="luuy">Important Notes</Label>
-                <textarea
-                  id="luuy"
-                  name="luuy"
-                  value={formData.luuy}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="Enter important notes for travelers"
-                  className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                />
-              </div>
-            </CardContent>
-          </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="note">Important Notes</Label>
+                  <textarea
+                    id="note"
+                    name="note"
+                    value={formData.note}
+                    onChange={handleChange}
+                    rows={4}
+                    placeholder="Enter important notes for travelers"
+                    className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Actions */}
           <div className="flex items-center justify-end gap-3">

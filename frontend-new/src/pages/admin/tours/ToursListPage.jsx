@@ -106,9 +106,9 @@ export default function ToursListPage() {
                         </Link>
                       </td>
                       <td className="px-6 py-4">
-                        {tour.avatar ? (
+                        {tour.imageUrl ? (
                           <img
-                            src={tour.avatar}
+                            src={tour.imageUrl}
                             alt={tour.name}
                             className="h-16 w-24 rounded object-cover"
                           />
@@ -119,10 +119,10 @@ export default function ToursListPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-900">
-                        ${tour.gianguoilon || "N/A"}
+                        ${tour.adultPrice || "N/A"}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-900">
-                        {tour.thoigian ? `${tour.thoigian} days` : "N/A"}
+                        {tour.duration ? `${tour.duration} days` : "N/A"}
                       </td>
                       <td className="px-6 py-4">
                         <button

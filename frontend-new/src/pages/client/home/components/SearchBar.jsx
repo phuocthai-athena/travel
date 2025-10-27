@@ -28,44 +28,29 @@ export default function SearchBar() {
       style={{ width: "1200px" }}
     >
       {/* Tabs */}
-      <div
-        className="flex w-[261px]"
-        style={{
-          filter: "drop-shadow(4px 6px 19px rgba(0, 0, 0, 0.1))",
-        }}
-      >
+      <div className="flex w-[261px] shadow-[4px_6px_19px_0px_#0000001A]">
         <button
           onClick={() => setActiveTab("tour")}
-          className={`flex items-center gap-2 px-6 py-3 transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-6 py-3 transition-colors cursor-pointer rounded-tl-md ${
             activeTab === "tour"
               ? "bg-[#00315C] text-white"
               : "bg-white text-[#707070]"
           }`}
-          style={{
-            borderRadius: "8px 0 0 0",
-            width: "111px",
-            height: "46px",
-          }}
         >
-          <Send className="w-[18px] h-[18px]" />
-          <span className="text-[16px]">Tour</span>
+          <Send className="size-4.5" />
+          <span className="text-base">Tour</span>
         </button>
 
         <button
           onClick={() => setActiveTab("hotel")}
-          className={`flex items-center gap-2 px-6 py-3 transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-6 py-3 transition-colors cursor-pointer rounded-tr-md ${
             activeTab === "hotel"
               ? "bg-[#00315C] text-white"
               : "bg-white text-[#707070]"
           }`}
-          style={{
-            borderRadius: "0 8px 0 0",
-            width: "150px",
-            height: "46px",
-          }}
         >
-          <Building2 className="w-[22px] h-[22px]" />
-          <span className="text-[16px]">Khách sạn</span>
+          <Building2 className="size-4.5" />
+          <span className="text-base">Khách sạn</span>
         </button>
       </div>
 
@@ -75,6 +60,7 @@ export default function SearchBar() {
         formData={formData}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        className="rounded-tl-none"
       />
     </div>
   );

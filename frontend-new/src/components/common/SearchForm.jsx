@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { Calendar, ArrowUpRight } from "lucide-react";
 
 export default function SearchForm({
@@ -5,6 +6,7 @@ export default function SearchForm({
   formData,
   onChange,
   onSubmit,
+  className,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,11 +16,11 @@ export default function SearchForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white flex items-end rounded-b-lg p-[30px_24px] gap-3"
+      className={cn(
+        "bg-white flex items-end rounded-md p-[30px_24px] gap-3 w-[1200px] h-[132px]",
+        className
+      )}
       style={{
-        width: "1200px",
-        height: "132px",
-        borderRadius: "0px 8px 8px 8px",
         boxShadow:
           "0px 54px 22px rgba(79, 79, 79, 0.01), 0px 31px 18px rgba(79, 79, 79, 0.05), 0px 14px 14px rgba(79, 79, 79, 0.09), 0px 3px 7px rgba(79, 79, 79, 0.1)",
       }}

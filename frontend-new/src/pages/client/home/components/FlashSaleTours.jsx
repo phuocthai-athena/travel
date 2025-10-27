@@ -1,6 +1,6 @@
-import { Clock, Star, Heart, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import SectionTitle from "@/components/common/SectionTitle";
+import TourCard from "@/components/common/TourCard";
 import phuQuocImg from "@/assets/images/phu-quoc.png";
 import haLongImg from "@/assets/images/ha-long.png";
 import ninhBinhImg from "@/assets/images/ninh-binh.png";
@@ -37,83 +37,83 @@ export default function FlashSaleTours() {
   const tours = [
     {
       id: 1,
-      image: phuQuocImg,
+      img: phuQuocImg,
       name: "Tour Phú Quốc 3 ngày 2 đêm",
       duration: "3 ngày 2 đêm",
       rating: 4,
       price: "2.945.000",
       discount: "-10%",
-      isFavorite: false,
+      liked: false,
     },
     {
       id: 2,
-      image: haLongImg,
+      img: haLongImg,
       name: "Tour Hạ Long 4 ngày 3 đêm",
       duration: "4 ngày 3 đêm",
       rating: 4,
       price: "3.945.000",
       discount: null,
-      isFavorite: false,
+      liked: false,
     },
     {
       id: 3,
-      image: ninhBinhImg,
+      img: ninhBinhImg,
       name: "Tour Ninh Bình 3 ngày 2 đêm",
       duration: "3 ngày 2 đêm",
       rating: 5,
       price: "2.645.000",
       discount: null,
-      isFavorite: true,
+      liked: true,
     },
     {
       id: 4,
-      image: mocChauImg,
+      img: mocChauImg,
       name: "Tour Mộc Châu 3 ngày 2 đêm",
       duration: "3 ngày 2 đêm",
       rating: 4,
       price: "1.945.000",
       discount: "-10%",
-      isFavorite: true,
+      liked: true,
     },
     {
       id: 5,
-      image: haGiangImg,
+      img: haGiangImg,
       name: "Tour Hà Giang 2 ngày 1 đêm",
       duration: "2 ngày 1 đêm",
       rating: 5,
       price: "1.530.000",
       discount: null,
-      isFavorite: true,
+      liked: true,
     },
     {
       id: 6,
-      image: nhaTrangImg,
+      img: nhaTrangImg,
       name: "Tour Nha Trang 5 ngày 4 đêm",
       duration: "5 ngày 4 đêm",
       rating: 5,
       price: "5.945.000",
       discount: "-10%",
-      isFavorite: false,
+      liked: false,
     },
     {
       id: 7,
-      image: hueImg,
+      img: hueImg,
       name: "Tour Huế 4 ngày 3 đêm",
       duration: "4 ngày 3 đêm",
       rating: 5,
       price: "3.945.000",
       discount: "-10%",
-      isFavorite: false,
+      liked: false,
     },
     {
       id: 8,
-      image: quyNhonImg,
+      img: quyNhonImg,
       name: "Tour Quy Nhơn 6 ngày 5 đêm",
       duration: "6 ngày 5 đêm",
       rating: 5,
       price: "7.945.000",
       discount: "-10%",
-      isFavorite: false,
+      liked: false,
     },
   ];
 
@@ -158,87 +158,5 @@ export default function FlashSaleTours() {
         ))}
       </div>
     </section>
-  );
-}
-
-function TourCard({ tour }) {
-  return (
-    <div className="relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      {/* Image */}
-      <div className="relative h-[220px] bg-gray-200">
-        <img
-          src={tour.image}
-          alt={tour.name}
-          className="w-full h-full object-cover"
-        />
-
-        {/* Discount Badge */}
-        {tour.discount && (
-          <div className="absolute top-5 left-5 bg-white px-3 py-1 rounded">
-            <span className="font-bold text-base text-[#00315C]">
-              {tour.discount}
-            </span>
-          </div>
-        )}
-
-        {/* Favorite Button */}
-        <button className="absolute top-5 right-5">
-          <Heart
-            className={`size-5.5 ${
-              tour.isFavorite ? "fill-red-500 text-red-500" : "text-white"
-            }`}
-          />
-        </button>
-      </div>
-
-      {/* Content */}
-      <div className="p-6 space-y-5">
-        {/* Title & Info */}
-        <div className="space-y-3">
-          <h3 className="text-lg font-normal text-[#00315C] line-clamp-1">
-            {tour.name}
-          </h3>
-
-          <div className="flex items-center justify-between">
-            {/* Duration */}
-            <div className="flex items-center gap-2">
-              <Clock className="size-4.5 text-gray-500" />
-              <span className="text-base text-gray-500">{tour.duration}</span>
-            </div>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-3 h-3 ${
-                    i < tour.rating
-                      ? "fill-yellow-400 text-yellow-400"
-                      : "fill-gray-200 text-gray-200"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Price & Button */}
-        <div className="pt-3 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-baseline gap-0.5">
-              <span className="text-lg font-bold text-[#00315C]">
-                {tour.price}
-              </span>
-              <span className="text-sm font-bold text-[#00315C]">đ</span>
-            </div>
-
-            <button className="flex items-center gap-1 text-[#F27052] hover:underline">
-              <span className="font-bold text-base">Xem chi tiết</span>
-              <ArrowUpRight className="size-4.5" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }

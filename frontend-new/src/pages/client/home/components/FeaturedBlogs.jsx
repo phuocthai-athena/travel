@@ -47,63 +47,59 @@ export default function FeaturedBlogs() {
   ];
 
   return (
-    <section className="w-full pb-[100px]">
-      <div className="container mx-auto px-[120px]">
-        <div className="flex flex-col" style={{ gap: "60px" }}>
-          {/* Header */}
-          <div
-            className="flex items-center justify-between"
-            style={{ height: "54px" }}
+    <section className="flex flex-col gap-15 px-30 pb-25 max-w-[1440px] mx-auto">
+      {/* Header */}
+      <div
+        className="flex items-center justify-between"
+        style={{ height: "54px" }}
+      >
+        <SectionTitle title="Bài viết nổi bật" align="left" />
+
+        <Button
+          className="bg-[#F27052] hover:bg-[#F27052]/90 text-white flex items-center justify-center"
+          style={{
+            width: "161px",
+            height: "49px",
+            padding: "12px 24px",
+            gap: "8px",
+            borderRadius: "4px",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Shopee Display",
+              fontWeight: 700,
+              fontSize: "18px",
+              lineHeight: "140%",
+              color: "#FFFFFF",
+            }}
           >
-            <SectionTitle title="Bài viết nổi bật" align="left" />
+            Xem tất cả
+          </span>
+          <ArrowUpRight className="w-5 h-5" />
+        </Button>
+      </div>
 
-            <Button
-              className="bg-[#F27052] hover:bg-[#F27052]/90 text-white flex items-center justify-center"
-              style={{
-                width: "161px",
-                height: "49px",
-                padding: "12px 24px",
-                gap: "8px",
-                borderRadius: "4px",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "Shopee Display",
-                  fontWeight: 700,
-                  fontSize: "18px",
-                  lineHeight: "140%",
-                  color: "#FFFFFF",
-                }}
-              >
-                Xem tất cả
-              </span>
-              <ArrowUpRight className="w-5 h-5" />
-            </Button>
-          </div>
+      {/* Blog Grid */}
+      <div className="flex flex-col" style={{ gap: "24px" }}>
+        {/* Row 1 */}
+        <div
+          className="flex justify-between"
+          style={{ height: "222px", gap: "24px" }}
+        >
+          {blogs.slice(0, 2).map((blog) => (
+            <BlogCard key={blog.id} blog={blog} />
+          ))}
+        </div>
 
-          {/* Blog Grid */}
-          <div className="flex flex-col" style={{ gap: "24px" }}>
-            {/* Row 1 */}
-            <div
-              className="flex justify-between"
-              style={{ height: "222px", gap: "24px" }}
-            >
-              {blogs.slice(0, 2).map((blog) => (
-                <BlogCard key={blog.id} blog={blog} />
-              ))}
-            </div>
-
-            {/* Row 2 */}
-            <div
-              className="flex justify-between"
-              style={{ height: "222px", gap: "24px" }}
-            >
-              {blogs.slice(2, 4).map((blog) => (
-                <BlogCard key={blog.id} blog={blog} />
-              ))}
-            </div>
-          </div>
+        {/* Row 2 */}
+        <div
+          className="flex justify-between"
+          style={{ height: "222px", gap: "24px" }}
+        >
+          {blogs.slice(2, 4).map((blog) => (
+            <BlogCard key={blog.id} blog={blog} />
+          ))}
         </div>
       </div>
     </section>

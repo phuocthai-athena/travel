@@ -118,46 +118,44 @@ export default function FlashSaleTours() {
   ];
 
   return (
-    <section className="container mx-auto px-[120px] pb-[100px]">
-      <div className="flex flex-col items-center gap-[60px]">
-        {/* Header */}
-        <div className="flex items-center justify-between w-full">
-          <SectionTitle title="ưu đãi hot hôm nay" align="left" />
+    <section className="flex flex-col gap-15 px-30 pb-25 max-w-[1440px] mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between w-full">
+        <SectionTitle title="ưu đãi hot hôm nay" align="left" />
 
-          {/* Countdown Timer */}
-          <div className="flex items-center gap-3">
-            <span className="text-lg text-[#497E91]">
-              CHƯƠNG TRÌNH DIỄN RA TRONG
-            </span>
-            <div className="flex items-center gap-1">
-              <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[35px] text-center">
-                {String(timeLeft.hours).padStart(2, "0")}
-              </div>
-              <span className="text-[#F27052] font-bold">:</span>
-              <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[32px] text-center">
-                {String(timeLeft.minutes).padStart(2, "0")}
-              </div>
-              <span className="text-[#F27052] font-bold">:</span>
-              <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[32px] text-center">
-                {String(timeLeft.seconds).padStart(2, "0")}
-              </div>
+        {/* Countdown Timer */}
+        <div className="flex items-center gap-3">
+          <span className="text-lg text-[#497E91]">
+            CHƯƠNG TRÌNH DIỄN RA TRONG
+          </span>
+          <div className="flex items-center gap-1">
+            <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[35px] text-center">
+              {String(timeLeft.hours).padStart(2, "0")}
+            </div>
+            <span className="text-[#F27052] font-bold">:</span>
+            <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[32px] text-center">
+              {String(timeLeft.minutes).padStart(2, "0")}
+            </div>
+            <span className="text-[#F27052] font-bold">:</span>
+            <div className="bg-[#F27052] text-white px-2.5 py-2 rounded font-bold text-base min-w-[32px] text-center">
+              {String(timeLeft.seconds).padStart(2, "0")}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Tours Grid - Row 1 */}
-        <div className="grid grid-cols-4 gap-6 w-full">
-          {tours.slice(0, 4).map((tour) => (
-            <TourCard key={tour.id} tour={tour} />
-          ))}
-        </div>
+      {/* Tours Grid - Row 1 */}
+      <div className="grid grid-cols-4 gap-6 w-full">
+        {tours.slice(0, 4).map((tour) => (
+          <TourCard key={tour.id} tour={tour} />
+        ))}
+      </div>
 
-        {/* Tours Grid - Row 2 */}
-        <div className="grid grid-cols-4 gap-6 w-full">
-          {tours.slice(4, 8).map((tour) => (
-            <TourCard key={tour.id} tour={tour} />
-          ))}
-        </div>
+      {/* Tours Grid - Row 2 */}
+      <div className="grid grid-cols-4 gap-6 w-full">
+        {tours.slice(4, 8).map((tour) => (
+          <TourCard key={tour.id} tour={tour} />
+        ))}
       </div>
     </section>
   );
@@ -186,7 +184,7 @@ function TourCard({ tour }) {
         {/* Favorite Button */}
         <button className="absolute top-5 right-5">
           <Heart
-            className={`w-[22px] h-[22px] ${
+            className={`size-5.5 ${
               tour.isFavorite ? "fill-red-500 text-red-500" : "text-white"
             }`}
           />
@@ -204,7 +202,7 @@ function TourCard({ tour }) {
           <div className="flex items-center justify-between">
             {/* Duration */}
             <div className="flex items-center gap-2">
-              <Clock className="w-[18px] h-[18px] text-gray-500" />
+              <Clock className="size-4.5 text-gray-500" />
               <span className="text-base text-gray-500">{tour.duration}</span>
             </div>
 
@@ -236,7 +234,7 @@ function TourCard({ tour }) {
 
             <button className="flex items-center gap-1 text-[#F27052] hover:underline">
               <span className="font-bold text-base">Xem chi tiết</span>
-              <ArrowUpRight className="w-[18px] h-[18px]" />
+              <ArrowUpRight className="size-4.5" />
             </button>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer className="bg-white w-full">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-[120px]">
+      <div className="px-30 max-w-[1440px] mx-auto">
         <div
           className="flex justify-between items-start"
           style={{
@@ -244,7 +244,7 @@ export default function Footer() {
       />
 
       {/* Bottom */}
-      <div className="container mx-auto px-[120px]">
+      <div className="px-30 max-w-[1440px] mx-auto">
         <div
           className="flex justify-between items-center"
           style={{

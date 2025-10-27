@@ -6,7 +6,7 @@ import ClientLayout from "@/layouts/ClientLayout";
 import HomePage from "@/pages/client/home/HomePage";
 import LoginPage from "@/pages/client/LoginPage";
 import RegisterPage from "@/pages/client/RegisterPage";
-import TourListPage from "@/pages/client/TourListPage";
+import TourPage from "@/pages/client/tour/TourPage";
 import FrontendTourDetailPage from "@/pages/client/TourDetailPage";
 import ProfilePage from "@/pages/client/ProfilePage";
 import NotFoundPage from "@/pages/common/NotFoundPage";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "tours",
-        element: <TourListPage />,
+        element: <TourPage />,
       },
       {
         path: "tour/:id",

@@ -97,190 +97,184 @@ export default function CustomerReviews() {
   const reviews = getSmallReviews();
 
   return (
-    <section className="container mx-auto px-[120px] pb-[100px]">
-      <div className="flex flex-col items-center" style={{ gap: "60px" }}>
-        <SectionTitle title="Khách hàng đánh giá" align="center" />
+    <section className="flex flex-col gap-15 px-30 pb-25 max-w-[1440px] mx-auto">
+      <SectionTitle title="Khách hàng đánh giá" align="center" />
 
-        {/* Đánh giá Container */}
+      {/* Đánh giá Container */}
+      <div
+        className="flex flex-col items-center"
+        style={{ width: "1200px", gap: "60px" }}
+      >
+        {/* Featured Review Card */}
         <div
-          className="flex flex-col items-center"
-          style={{ width: "1200px", gap: "60px" }}
+          className="relative"
+          style={{
+            width: "997px",
+            height: "480px",
+            transition: "opacity 0.3s ease-in-out",
+            opacity: isTransitioning ? 0.5 : 1,
+          }}
         >
-          {/* Featured Review Card */}
+          {/* Avatar */}
           <div
-            className="relative"
+            className="absolute overflow-hidden"
             style={{
-              width: "997px",
+              left: "0px",
+              top: "35px",
+              width: "385px",
+              height: "410px",
+              borderRadius: "8px 8px 8px 0px",
+              boxShadow: "3px 21px 30px -6px rgba(255, 96, 46, 0.2)",
+            }}
+          >
+            <img
+              src={featuredReview.avatar}
+              alt="Customer"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Background Card */}
+          <div
+            className="absolute bg-white"
+            style={{
+              left: "307px",
+              right: "0px",
+              top: "0px",
               height: "480px",
+              border: "1px solid #F27052",
+              borderRadius: "0px 12px 12px 0px",
+              boxShadow: "3px 21px 30px -6px rgba(255, 96, 46, 0.2)",
+            }}
+          >
+            {/* Text Container */}
+            <div
+              className="absolute"
+              style={{
+                left: "103px",
+                right: "102px",
+                top: "50px",
+                height: "380px",
+              }}
+            >
+              {/* Quote Mark */}
+              <div
+                className="absolute text-center"
+                style={{
+                  left: "0px",
+                  right: "419px",
+                  top: "0px",
+                  fontFamily: "Big Shoulders Display",
+                  fontWeight: 400,
+                  fontSize: "200px",
+                  lineHeight: "239px",
+                  color: "#497E91",
+                  textTransform: "capitalize",
+                }}
+              >
+                "
+              </div>
+
+              {/* Title */}
+              <h3
+                className="absolute"
+                style={{
+                  left: "100.5px",
+                  right: "0.5px",
+                  top: "59px",
+                  fontFamily: "Shopee Display",
+                  fontWeight: 700,
+                  fontSize: "32px",
+                  lineHeight: "130%",
+                  color: "#00315C",
+                }}
+              >
+                {featuredReview.quote}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="absolute"
+                style={{
+                  left: "-0.5px",
+                  right: "0.5px",
+                  top: "183px",
+                  fontFamily: "Shopee Display",
+                  fontWeight: 400,
+                  fontSize: "16px",
+                  lineHeight: "140%",
+                  color: "#888888",
+                }}
+              >
+                {featuredReview.text}
+              </p>
+
+              {/* Author */}
+              <p
+                className="absolute"
+                style={{
+                  left: "347.5px",
+                  right: "0.5px",
+                  top: "307px",
+                  fontFamily: "Shopee Display",
+                  fontWeight: 700,
+                  fontSize: "18px",
+                  lineHeight: "140%",
+                  color: "#00315C",
+                }}
+              >
+                _{featuredReview.name}_
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tài khoản Container */}
+        <div className="flex flex-col" style={{ width: "1200px", gap: "20px" }}>
+          {/* Reviews Grid */}
+          <div
+            className="flex"
+            style={{
+              width: "1200px",
+              gap: "24px",
               transition: "opacity 0.3s ease-in-out",
               opacity: isTransitioning ? 0.5 : 1,
             }}
           >
-            {/* Avatar */}
-            <div
-              className="absolute overflow-hidden"
-              style={{
-                left: "0px",
-                top: "35px",
-                width: "385px",
-                height: "410px",
-                borderRadius: "8px 8px 8px 0px",
-                boxShadow: "3px 21px 30px -6px rgba(255, 96, 46, 0.2)",
-              }}
-            >
-              <img
-                src={featuredReview.avatar}
-                alt="Customer"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Background Card */}
-            <div
-              className="absolute bg-white"
-              style={{
-                left: "307px",
-                right: "0px",
-                top: "0px",
-                height: "480px",
-                border: "1px solid #F27052",
-                borderRadius: "0px 12px 12px 0px",
-                boxShadow: "3px 21px 30px -6px rgba(255, 96, 46, 0.2)",
-              }}
-            >
-              {/* Text Container */}
-              <div
-                className="absolute"
-                style={{
-                  left: "103px",
-                  right: "102px",
-                  top: "50px",
-                  height: "380px",
-                }}
-              >
-                {/* Quote Mark */}
-                <div
-                  className="absolute text-center"
-                  style={{
-                    left: "0px",
-                    right: "419px",
-                    top: "0px",
-                    fontFamily: "Big Shoulders Display",
-                    fontWeight: 400,
-                    fontSize: "200px",
-                    lineHeight: "239px",
-                    color: "#497E91",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  "
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="absolute"
-                  style={{
-                    left: "100.5px",
-                    right: "0.5px",
-                    top: "59px",
-                    fontFamily: "Shopee Display",
-                    fontWeight: 700,
-                    fontSize: "32px",
-                    lineHeight: "130%",
-                    color: "#00315C",
-                  }}
-                >
-                  {featuredReview.quote}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="absolute"
-                  style={{
-                    left: "-0.5px",
-                    right: "0.5px",
-                    top: "183px",
-                    fontFamily: "Shopee Display",
-                    fontWeight: 400,
-                    fontSize: "16px",
-                    lineHeight: "140%",
-                    color: "#888888",
-                  }}
-                >
-                  {featuredReview.text}
-                </p>
-
-                {/* Author */}
-                <p
-                  className="absolute"
-                  style={{
-                    left: "347.5px",
-                    right: "0.5px",
-                    top: "307px",
-                    fontFamily: "Shopee Display",
-                    fontWeight: 700,
-                    fontSize: "18px",
-                    lineHeight: "140%",
-                    color: "#00315C",
-                  }}
-                >
-                  _{featuredReview.name}_
-                </p>
-              </div>
-            </div>
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
           </div>
 
-          {/* Tài khoản Container */}
+          {/* Pagination / Slider Indicators */}
           <div
-            className="flex flex-col"
-            style={{ width: "1200px", gap: "20px" }}
+            className="flex justify-center items-center"
+            style={{ width: "1200px", height: "30px", gap: "0px" }}
           >
-            {/* Reviews Grid */}
-            <div
-              className="flex"
-              style={{
-                width: "1200px",
-                gap: "24px",
-                transition: "opacity 0.3s ease-in-out",
-                opacity: isTransitioning ? 0.5 : 1,
-              }}
-            >
-              {reviews.map((review) => (
-                <ReviewCard key={review.id} review={review} />
-              ))}
-            </div>
-
-            {/* Pagination / Slider Indicators */}
-            <div
-              className="flex justify-center items-center"
-              style={{ width: "1200px", height: "30px", gap: "0px" }}
-            >
-              {/* Indicators */}
-              {allReviews.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setIsTransitioning(true);
-                    setTimeout(() => {
-                      setCurrentIndex(index);
-                      setIsTransitioning(false);
-                    }, 300);
+            {/* Indicators */}
+            {allReviews.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setTimeout(() => {
+                    setCurrentIndex(index);
+                    setIsTransitioning(false);
+                  }, 300);
+                }}
+                className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+                style={{ width: "24px", height: "25px" }}
+              >
+                <div
+                  style={{
+                    width: "16px",
+                    height: "2px",
+                    background: index === currentIndex ? "#F27052" : "#888888",
+                    transition: "background 0.3s ease-in-out",
                   }}
-                  className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
-                  style={{ width: "24px", height: "25px" }}
-                >
-                  <div
-                    style={{
-                      width: "16px",
-                      height: "2px",
-                      background:
-                        index === currentIndex ? "#F27052" : "#888888",
-                      transition: "background 0.3s ease-in-out",
-                    }}
-                  />
-                </button>
-              ))}
-            </div>
+                />
+              </button>
+            ))}
           </div>
         </div>
       </div>

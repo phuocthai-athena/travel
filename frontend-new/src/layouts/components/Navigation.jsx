@@ -12,12 +12,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="flex items-center gap-[60px]">
+    <nav className="flex items-center gap-15 h-5.5">
       {navItems.map((item) => (
         <Link
           key={item.path}
           to={item.path}
-          className={`text-base font-bold transition-colors ${
+          className={`font-bold text-base leading-[140%] flex items-center justify-center transition-colors ${
             location.pathname === item.path
               ? "text-[#F27052]"
               : "text-[#00315C] hover:text-[#F27052]"

@@ -51,49 +51,47 @@ export default function PopularDestinations() {
   };
 
   return (
-    <section className="container mx-auto px-[120px] pb-[100px]">
-      <div className="flex flex-col items-center" style={{ gap: "60px" }}>
-        <SectionTitle title="Điểm đến yêu thích" align="center" />
+    <section className="flex flex-col gap-15 px-30 pb-25 max-w-[1440px] mx-auto">
+      <SectionTitle title="Điểm đến yêu thích" align="center" />
 
-        {/* Destinations Grid */}
-        <div className="flex flex-col w-full" style={{ gap: "24px" }}>
-          {/* Row 1 */}
-          <div className="flex w-full" style={{ gap: "24px" }}>
-            <DestinationCard
-              destination={destinations.row1[0]}
-              className="flex-1"
-              style={{ width: "282px" }}
-            />
-            <DestinationCard
-              destination={destinations.row1[1]}
-              className="flex-none"
-              style={{ width: "588px" }}
-            />
-            <DestinationCard
-              destination={destinations.row1[2]}
-              className="flex-1"
-              style={{ width: "282px" }}
-            />
-          </div>
+      {/* Destinations Grid */}
+      <div className="flex flex-col w-full" style={{ gap: "24px" }}>
+        {/* Row 1 */}
+        <div className="flex w-full" style={{ gap: "24px" }}>
+          <DestinationCard
+            destination={destinations.row1[0]}
+            className="flex-1"
+            style={{ width: "282px" }}
+          />
+          <DestinationCard
+            destination={destinations.row1[1]}
+            className="flex-none"
+            style={{ width: "588px" }}
+          />
+          <DestinationCard
+            destination={destinations.row1[2]}
+            className="flex-1"
+            style={{ width: "282px" }}
+          />
+        </div>
 
-          {/* Row 2 */}
-          <div className="flex w-full" style={{ gap: "24px" }}>
-            <DestinationCard
-              destination={destinations.row2[0]}
-              className="flex-none"
-              style={{ width: "588px" }}
-            />
-            <DestinationCard
-              destination={destinations.row2[1]}
-              className="flex-1"
-              style={{ width: "282px" }}
-            />
-            <DestinationCard
-              destination={destinations.row2[2]}
-              className="flex-1"
-              style={{ width: "282px" }}
-            />
-          </div>
+        {/* Row 2 */}
+        <div className="flex w-full" style={{ gap: "24px" }}>
+          <DestinationCard
+            destination={destinations.row2[0]}
+            className="flex-none"
+            style={{ width: "588px" }}
+          />
+          <DestinationCard
+            destination={destinations.row2[1]}
+            className="flex-1"
+            style={{ width: "282px" }}
+          />
+          <DestinationCard
+            destination={destinations.row2[2]}
+            className="flex-1"
+            style={{ width: "282px" }}
+          />
         </div>
       </div>
     </section>

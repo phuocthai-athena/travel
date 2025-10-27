@@ -1,10 +1,24 @@
 // src/components/tours/TourCard.jsx
 import { Clock, Star, Heart, ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function TourCard({ tour }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/tour/${tour.id}`);
+  };
+
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    // TODO: Implement favorite toggle logic
+    console.log("Toggle favorite for tour:", tour.id);
+  };
+
   return (
     <div
       key={tour.id}
+      onClick={handleCardClick}
       className="flex flex-col w-[282px] h-[379px] bg-white rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0px_10px_30px_rgba(0,0,0,0.15)]"
     >
       {/* Image */}
@@ -26,7 +40,10 @@ export default function TourCard({ tour }) {
 
         {/* Favorite Button */}
         {tour.liked && (
-          <button className="absolute top-5 right-5">
+          <button
+            onClick={handleFavoriteClick}
+            className="absolute top-5 right-5 hover:scale-110 transition-transform"
+          >
             <Heart
               className={`size-5.5 ${
                 tour.like ? "fill-red-500 text-red-500" : "text-white"

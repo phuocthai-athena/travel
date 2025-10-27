@@ -6,7 +6,6 @@ export default function Navigation() {
   const navItems = [
     { path: "/", label: "TRANG CHỦ" },
     { path: "/tours", label: "TOUR" },
-    { path: "/hotels", label: "KHÁCH SẠN" },
     { path: "/travel-guide", label: "CẨM NANG DU LỊCH" },
     { path: "/contact", label: "LIÊN HỆ" },
   ];

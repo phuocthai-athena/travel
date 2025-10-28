@@ -4,7 +4,7 @@ import {
   registerSchema,
   resetPasswordSchema,
   verificationCodeSchema,
-} from "./auth.schema.js";
+} from "../schemas/auth.schema.js";
 import {
   createAccount,
   loginUser,

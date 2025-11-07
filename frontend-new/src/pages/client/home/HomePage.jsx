@@ -1,11 +1,11 @@
-import HeroBanner from "./components/HeroBanner";
-import HowItWorks from "./components/HowItWorks";
-import FlashSaleTours from "./components/FlashSaleTours";
-import Statistics from "./components/Statistics";
-import HotelPromotions from "./components/HotelPromotions";
-import PopularDestinations from "./components/PopularDestinations";
-import CustomerReviews from "./components/CustomerReviews";
-import FeaturedBlogs from "./components/FeaturedBlogs";
+import HeroBanner from "@/components/client/home/ui/HeroBanner";
+import HowItWorks from "@/components/client/home/ui/HowItWorks";
+import FlashSaleTours from "@/components/client/home/ui/FlashSaleTours";
+import Statistics from "@/components/client/home/ui/Statistics";
+import HotelPromotions from "@/components/client/home/ui/HotelPromotions";
+import PopularDestinations from "@/components/client/home/ui/PopularDestinations";
+import CustomerReviews from "@/components/client/home/ui/CustomerReviews";
+import FeaturedBlogs from "@/components/client/home/ui/FeaturedBlogs";
 
 export default function HomePage() {
   return (

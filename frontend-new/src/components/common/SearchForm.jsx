@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Calendar, ArrowUpRight } from "lucide-react";
+import { Calendar as CalendarIcon, ArrowUpRight } from "lucide-react";
 
 export default function SearchForm({
   type = "tour", // "tour" | "hotel"
@@ -61,7 +61,10 @@ export default function SearchForm({
               Ngày đi
             </label>
             <div className="relative flex items-center">
-              <Calendar className="absolute left-3 text-[#707070]" size={18} />
+              <CalendarIcon
+                className="absolute left-3 text-[#707070]"
+                size={18}
+              />
               <input
                 type="date"
                 value={formData.startDate}
@@ -77,7 +80,10 @@ export default function SearchForm({
               Ngày về
             </label>
             <div className="relative flex items-center">
-              <Calendar className="absolute left-3 text-[#707070]" size={18} />
+              <CalendarIcon
+                className="absolute left-3 text-[#707070]"
+                size={18}
+              />
               <input
                 type="date"
                 value={formData.endDate}
@@ -123,7 +129,10 @@ export default function SearchForm({
               Nhận phòng
             </label>
             <div className="relative flex items-center">
-              <Calendar className="absolute left-3 text-[#707070]" size={18} />
+              <CalendarIcon
+                className="absolute left-3 text-[#707070]"
+                size={18}
+              />
               <input
                 type="date"
                 value={formData.checkinDate}
@@ -139,7 +148,10 @@ export default function SearchForm({
               Trả phòng
             </label>
             <div className="relative flex items-center">
-              <Calendar className="absolute left-3 text-[#707070]" size={18} />
+              <CalendarIcon
+                className="absolute left-3 text-[#707070]"
+                size={18}
+              />
               <input
                 type="date"
                 value={formData.checkoutDate}

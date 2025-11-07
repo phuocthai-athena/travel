@@ -6,8 +6,9 @@ import ClientLayout from "@/layouts/ClientLayout";
 import HomePage from "@/pages/client/home/HomePage";
 import LoginPage from "@/pages/client/LoginPage";
 import RegisterPage from "@/pages/client/RegisterPage";
-import TourPage from "@/pages/client/tour/TourPage";
-import FrontendTourDetailPage from "@/pages/client/TourDetailPage";
+import TourPage from "@/pages/client/tours/TourPage";
+import TourListPage from "@/pages/client/tours/TourListPage";
+// import FrontendTourDetailPage from "@/pages/client/TourDetailPage";
 import ProfilePage from "@/pages/client/ProfilePage";
 import NotFoundPage from "@/pages/common/NotFoundPage";
 
@@ -31,9 +32,13 @@ const router = createBrowserRouter([
         element: <TourPage />,
       },
       {
-        path: "tour/:id",
-        element: <FrontendTourDetailPage />,
+        path: "tours/list",
+        element: <TourListPage />,
       },
+      // {
+      //   path: "tour/:id",
+      //   element: <FrontendTourDetailPage />,
+      // },
       {
         path: "profile",
         element: (

@@ -1,4 +1,8 @@
-import { Calendar, User, ArrowUpRight } from "lucide-react";
+import {
+  Calendar as CalendarIcon,
+  User as UserIcon,
+  ArrowUpRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionTitle from "@/components/common/SectionTitle";
 import bvMaPiLengImg from "@/assets/images/bv-ma-pi-leng.png";
@@ -170,7 +174,7 @@ function BlogCard({ blog }) {
         >
           {/* Thời gian */}
           <div className="flex items-center" style={{ gap: "8px" }}>
-            <Calendar
+            <CalendarIcon
               style={{ width: "18px", height: "18px", color: "#707070" }}
             />
             <span
@@ -188,7 +192,9 @@ function BlogCard({ blog }) {
 
           {/* Tác giả */}
           <div className="flex items-center" style={{ gap: "8px" }}>
-            <User style={{ width: "18px", height: "18px", color: "#707070" }} />
+            <UserIcon
+              style={{ width: "18px", height: "18px", color: "#707070" }}
+            />
             <span
               style={{
                 fontFamily: "Shopee Display",
